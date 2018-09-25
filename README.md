@@ -1,0 +1,1 @@
+Backend API to receive information and send emails
