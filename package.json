@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +17,6 @@
     "@sendgrid/mail": "^6.3.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "mailgun-js": "^0.21.0",
-    "node-fetch": "^2.2.0"
+    "mailgun-js": "^0.21.0"
   }
 }
