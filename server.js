@@ -24,6 +24,10 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/communicate', sendMail);
 
+app.get('/', function (req, res) {
+    res.send('Email sender please check docs https://github.com/frankiannelli/emailAPI');
+  });
+
 app.listen(port, () => console.log(`App started on port ${port}!`));
 
 // async function sendMailgunMail() {
