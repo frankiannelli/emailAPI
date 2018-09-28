@@ -11,12 +11,13 @@ sendMail.post('/mail', async (req, res) => {
   try {
     await sendMailGunEmail(recipients, message);
     res.status(200).send('sent with Mailgun');
-  } catch (e) {
+  } catch (err) {
+    console.error(err)
     try {
       await sendSendGridEmail(recipients, message);
       res.status(202).send('sent with Sendgrid');
-    } catch (e) {
-      res.status(400).send(e);
+    } catch (err) {
+      res.status(400).send(err);
     }
   }
 });

@@ -4,7 +4,7 @@ const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, dom
 exports.sendMailGunEmail = (recipients, message) =>
   new Promise((resolve, reject) => {
     const data = {
-      from: 'Frank <info@frank.com>',
+      from: emailConfig.senderAddress,
       to: recipients.to,
       subject: message.subject,
       text: message.text
