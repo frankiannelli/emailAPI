@@ -4,3 +4,4 @@ Backend API to receive information and send emails
 [ ] respond with error if wrong
 [ ] change format if it is to go through mailgun
 [ ] Tests
+[ ] make sure server.log is working
