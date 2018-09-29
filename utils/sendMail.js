@@ -18,6 +18,7 @@ sendMail.post('/mail', async (req, res) => {
       res.status(200).send('sent with Sendgrid');
     } catch (err) {
       res.status(400).send(err);
+      console.error(err);
     }
   }
 });
