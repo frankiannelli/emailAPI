@@ -1,7 +1,10 @@
 Backend API to receive information and send emails
 
-[ ] accept body in certain format
-[ ] respond with error if wrong
-[ ] change format if it is to go through mailgun
-[ ] Tests
+[ ] send back the same response for both requests check the data submitted
 [ ] make sure server.log is working
+[ ] write readme
+[ ] build react client
+
+
+Front End Features
+* Input Validation

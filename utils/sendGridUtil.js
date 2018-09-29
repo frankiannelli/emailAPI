@@ -11,7 +11,7 @@ exports.sendSendGridEmail = (recipients, message) => {
     subject: message.subject,
     text: message.text
   };
-  //data must be passed as per the format below
+  // data object must be in the format example below
   data.to && data.to.split(',');
   data.cc && data.cc.split(',');
   data.bcc && data.bcc.split(',');

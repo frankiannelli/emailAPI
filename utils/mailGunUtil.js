@@ -17,12 +17,3 @@ exports.sendMailGunEmail = (recipients, message) =>
       return resolve();
     });
   });
-
-// let exampleMailGunMsg = {
-//   from: 'Excited User <me@samples.mailgun.org>',
-//   to: 'franks1983@yahoo.com.au, baz@example.com, bar@example.com',
-//   cc: 'baz@example.com, look@example.com',
-//   bcc: 'bar@example.com, joey@dert.com',
-//   subject: 'Complex',
-//   text: 'Testing some Mailgun awesomness!'
-// };

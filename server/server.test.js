@@ -1,20 +1,11 @@
 const request = require('supertest');
-
 let app = require('./server').app;
-
-it('should return link to github response', (done) => {
-  request(app)
-    .get('/')
-    .expect(200)
-    .expect('Email sender please check docs https://github.com/frankiannelli/emailAPI')
-    .end(done);
-});
 
 const msg = {
   'recipients': {
-    'to': 'franks1983@yahoo.com.au, example@example.com',
-    'cc': 'cc@frank.com, cc@example.com',
-    'bcc': 'bcc@frank.com, bcc@example.com'
+    'to': 'example@example.com, example@example.com',
+    'cc': 'example@example.com, example@example.com',
+    'bcc': 'example@example.com, example@example.com'
   },
   'message': {
     'subject': 'subject',
@@ -22,18 +13,40 @@ const msg = {
   }
 };
 
+describe('Get /',() => {
+  it('responds with 200 status and html', (done) => {
+    request(app)
+      .get('/')
+      .expect(200)
+      .expect('<h1>Email sender</h1><h3>please check docs <a href="https://github.com/frankiannelli/emailAPI">HERE</a></h3>')
+      .end(done);
+  });
+});
 
-describe('POST /api/v1/communicate/mail', function () {
-  it('should respond status 200 for succesful email', function (done) {
+describe('POST /api/v1/communicate/mail', () => {
+  it('should respond status 200 for succesful email', (done) => {
     request(app)
       .post('/api/v1/communicate/mail')
       .send(msg)
       .set('Accept', 'application/json')
       .expect(200)
-      .end(done);
-      // .end(function (err, res) {
-      //   if (err) return done(err);
-      //   done();
-      // });
+      .end(function (err) {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
+
+describe('POST /api/v1/communicate/mail', () => {
+  it('should respond status 400 for bad requests', (done) => {
+    request(app)
+      .post('/api/v1/communicate/mail')
+      .send('bad message')
+      .set('Accept', 'application/json')
+      .expect(400)
+      .end(function (err) {
+        if (err) return done(err);
+        done();
+      });
   });
 });

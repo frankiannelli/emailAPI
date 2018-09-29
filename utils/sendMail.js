@@ -12,10 +12,10 @@ sendMail.post('/mail', async (req, res) => {
     await sendMailGunEmail(recipients, message);
     res.status(200).send('sent with Mailgun');
   } catch (err) {
-    console.error(err)
+    console.error(err);
     try {
       await sendSendGridEmail(recipients, message);
-      res.status(202).send('sent with Sendgrid');
+      res.status(200).send('sent with Sendgrid');
     } catch (err) {
       res.status(400).send(err);
     }
@@ -23,25 +23,3 @@ sendMail.post('/mail', async (req, res) => {
 });
 
 module.exports = sendMail;
-
-// sendMail.post('/mail', async (req, res, next) => {
-//   const { recipients, message } = req.body;
-//   try {
-//     await sendMailGunEmail(recipients, message);
-//     res.json({ message: 'Your query has been sent with Mailgun' });
-//     await next();
-//   } catch (e) {
-//     await next(e);
-//   }
-// });
-
-// sendMail.post('/sendgridnew', async (req, res, next) => {
-//   const { recipients, message } = req.body;
-//   try {
-//     await sendSendGridEmail(recipients, message);
-//     res.json({ message: 'Your query has been sent with sendgrid' });
-//     await next();
-//   } catch (e) {
-//     await next(e);
-//   }
-// });
