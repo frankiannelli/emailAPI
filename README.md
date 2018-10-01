@@ -7,9 +7,9 @@ This Project has 2 seperate concerns for sending emails
 
 ## View Live
 
-[Client](www.example.com)
+[Client](http://competent-fermi-72ba9c.netlify.com)
 
-[API](www.example.com)
+[API](https://serene-inlet-87099.herokuapp.com/)
 
 ![emailSender](/public/images/client.png)
 
@@ -64,6 +64,7 @@ this endpoint accepts JSON data in the following format
 * If email fails the form data does not clear so that user can update and resend
 * If email succeeds the form clears so the user can send again
 * Mobile responsive
+* Loading spinner while user waits for response
 
 ## Further Improvements
 * Improve the flow control for the email fallback. Fallback should be handled outside of the error handler.
