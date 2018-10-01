@@ -23,10 +23,10 @@ describe('Get /',() => {
   });
 });
 
-describe('POST /api/v1/communicate/mail', () => {
+describe('POST /api/communicate/mail', () => {
   it('should respond status 200 for succesful email', (done) => {
     request(app)
-      .post('/api/v1/communicate/mail')
+      .post('/api/communicate/mail')
       .send(msg)
       .set('Accept', 'application/json')
       .expect(200)
@@ -37,10 +37,10 @@ describe('POST /api/v1/communicate/mail', () => {
   });
 });
 
-describe('POST /api/v1/communicate/mail', () => {
+describe('POST /api/communicate/mail', () => {
   it('should respond status 400 for bad requests', (done) => {
     request(app)
-      .post('/api/v1/communicate/mail')
+      .post('/api/communicate/mail')
       .send('bad message')
       .set('Accept', 'application/json')
       .expect(400)

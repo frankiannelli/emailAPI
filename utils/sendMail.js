@@ -10,12 +10,12 @@ sendMail.post('/mail', async (req, res) => {
   const { recipients, message } = req.body;
   try {
     await sendMailGunEmail(recipients, message);
-    res.status(200).send('sent with Mailgun');
+    res.status(200).send('Sent with Mailgun');
   } catch (err) {
     console.error(err);
     try {
       await sendSendGridEmail(recipients, message);
-      res.status(200).send('sent with Sendgrid');
+      res.status(200).send('Sent with Sendgrid');
     } catch (err) {
       res.status(400).send(err);
       console.error(err);

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Input } from 'semantic-ui-react';
-import './InputField.css';
+import { Form, TextArea } from 'semantic-ui-react';
+import './TextBox.css';
 import PropTypes from 'prop-types';
 
-class InputField extends Component {
+class TextBox extends Component {
   static propTypes = {
     labelname: PropTypes.string,
     className: PropTypes.string,
@@ -11,8 +11,7 @@ class InputField extends Component {
     validate: PropTypes.func,
     value: PropTypes.string,
     name: PropTypes.string,
-    section: PropTypes.string,
-    placeholder: PropTypes.string
+    section: PropTypes.string
   }
 
   state = {
@@ -34,24 +33,26 @@ class InputField extends Component {
 
     this.props.onChange({ name, value, error, section });
   }
-  
+
   render() {
     return (
       <div className="data">
         <label>{this.props.labelname}</label>
-        <Input
-          fluid
-          value={this.state.value}
-          name={this.props.name}
-          section={this.props.section}
-          onChange={this.onChange}
-          className={this.props.className}
-          placeholder={this.props.placeholder}
-        />
-        <p style={{ color: 'red', marginLeft: '16px', marginTop: '5px' }}>{this.state.error}</p>
+        <Form>
+          <TextArea
+            // fluid
+            value={this.state.value}
+            name={this.props.name}
+            section={this.props.section}
+            onChange={this.onChange}
+            className={this.props.className}
+            placeholder={this.props.placeholder}
+          />
+          <p style={{ color: 'red', marginLeft: '16px', marginTop: '5px' }}>{this.state.error}</p>
+        </Form>
       </div>
     );
   }
 }
 
-export default InputField;
+export default TextBox;

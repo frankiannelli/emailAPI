@@ -1,0 +1,16 @@
+label {
+  display: block;
+  padding: 2px;
+  margin-bottom: 5px;
+  font-size: 1.0em;
+}
+
+TextArea {
+  font-size: 1.2em;
+  line-height: 1.2;
+  color: #2d2d2d !important;
+}
+
+.data {
+  padding: 10px;
+}

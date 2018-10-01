@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env' });
 const express = require('express');
 const sendMail = require('../utils/sendMail');
 const fs = require('fs');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const app = express();
 var bodyParser = require('body-parser');
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   console.log(log);
   fs.appendFile('server.log', `${log}\n`, (err) => {
     if (err) {
-      console.log(err);
+      console.error(err);
     }
   });
   next();
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
   res.send('<h1>Email sender</h1><h3>please check docs <a href="https://github.com/frankiannelli/emailAPI">HERE</a></h3>');
 });
 
-app.use('/api/v1/communicate', sendMail);
+app.use('/api/communicate', sendMail);
 
 app.get('/*', (req, res) => {
   res.status(404).send('Page not found');

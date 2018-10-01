@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './EmailMessageContainer.css';
 import Form from './Form/Form';
+import ModalArea from './ModalArea/ModalArea';
+// import Spinner from './Spinner/Spinner';
 import axios from 'axios';
+// import { Modal } from 'semantic-ui-react';
 
-class HCardContainer extends Component {
+class EmailMessageContainer extends Component {
   state = {
     email: {
       recipients: {
@@ -16,14 +19,18 @@ class HCardContainer extends Component {
         text: ''
       }
     },
-    fieldErrors: {}
+    fieldErrors: {},
+    loading: false,
+    modalOpen: false,
+    responseMessages: [],
+    sentStatus: ''
   }
 
   onInputChange = ({ name, value, error, section }) => {
     const message = Object.assign({}, this.state.email);
     const fieldErrors = Object.assign({}, this.state.fieldErrors);
     let level = message[section];
-    
+
     level[name] = value;
     fieldErrors[name] = error;
 
@@ -31,14 +38,46 @@ class HCardContainer extends Component {
   }
 
   handleEmailSubmit = () => {
+    this.setState({ loading: true, modalOpen: true });
     let email = this.state.email;
-    axios.post('http://localhost:3000/api/v1/communicate/mail', email )
-      .then(function (response) {
-        console.log(response);
+    axios.post('http://localhost:5000/api/communicate/mail', email)
+      .then((response) => {
+        this.setState({ loading: false });
+        this.setState({ sentStatus: 'success' });
+        let message = [{ message: response.data, field: response.data }];
+        this.setState({ responseMessages: message });
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((error) => {
+        this.setState({ loading: false });
+        this.setState({ sentStatus: 'failed' });
+        this.setState({ responseMessages: error.response.data.response.body.errors });
       });
+  }
+
+  handleFormClear = () => {
+    let clear = {
+      email: {
+        recipients: {
+          to: '',
+          cc: '',
+          bcc: '',
+        },
+        message: {
+          subject: '',
+          text: ''
+        }
+      },
+      fieldErrors: {},
+      loading: false,
+      modalOpen: false,
+      responseErrors: [],
+      sentStatus: ''
+    };
+    this.setState(clear);
+  }
+
+  closeModal = () => {
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -52,6 +91,14 @@ class HCardContainer extends Component {
               fieldErrors={this.state.fieldErrors}
               handleEmailSubmit={this.handleEmailSubmit}
             />
+            <ModalArea
+              loading={this.state.loading}
+              modalOpen={this.state.modalOpen}
+              responseMessages={this.state.responseMessages}
+              handleFormClear={this.handleFormClear}
+              sentStatus={this.state.sentStatus}
+              closeModal={this.closeModal}
+            />
           </div>
         </div>
       </div>
@@ -59,4 +106,4 @@ class HCardContainer extends Component {
   }
 }
 
-export default HCardContainer;
+export default EmailMessageContainer;
