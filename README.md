@@ -60,6 +60,13 @@ this endpoint accepts JSON data in the following format
 2. `npm run dev` in root directory.
 3. `npm start` in client.
 
+## Front-end Deployment 
+1. `npm run build` from cli in client directory
+2. `netlify deploy` from cli in client directory
+
+## Back-end Deployment
+1. `git push heroku` from cli in root directory
+
 ## Environment variables
 
 This applications requires environment variables from:
