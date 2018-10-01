@@ -18,6 +18,7 @@ class Form extends Component {
     this.props.onChange({ name, value, error, section });
   }
 
+  // use this code to validate the send button so it is disabled until the form validates
   // validate = () => {
   //   const { fieldErrors } = this.props;
   //   const errMessages = Object.keys(fieldErrors).filter(k => fieldErrors[k]);

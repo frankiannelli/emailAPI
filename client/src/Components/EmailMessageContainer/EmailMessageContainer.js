@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './EmailMessageContainer.css';
 import Form from './Form/Form';
 import ModalArea from './ModalArea/ModalArea';
-// import Spinner from './Spinner/Spinner';
 import axios from 'axios';
-// import { Modal } from 'semantic-ui-react';
+
+const url = (process.env.NODE_ENV === 'development')
+  ? 'http://localhost:5000/api/communicate/mail'
+  : 'https://serene-inlet-87099.herokuapp.com/api/communicate/mail';
 
 class EmailMessageContainer extends Component {
   state = {
@@ -40,7 +42,7 @@ class EmailMessageContainer extends Component {
   handleEmailSubmit = () => {
     this.setState({ loading: true, modalOpen: true });
     let email = this.state.email;
-    axios.post('http://localhost:5000/api/communicate/mail', email)
+    axios.post(url, email)
       .then((response) => {
         this.setState({ loading: false });
         this.setState({ sentStatus: 'success' });

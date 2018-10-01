@@ -68,7 +68,9 @@ this endpoint accepts JSON data in the following format
 ## Further Improvements
 * Improve the flow control for the email fallback. Fallback should be handled outside of the error handler.
 * No errors logged for initial call to Mailgun. The API uses SendGrid as the fallback and only reports the SendGrid errors.
-* sned button on client no be diabled until form validates
+* send button on client should be diabled until form validates
+* write more tests
 
 [] push to prod for client and API
 [] update client to send post request to prod
+[] write tests REACT
