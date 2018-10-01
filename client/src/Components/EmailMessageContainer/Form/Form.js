@@ -64,7 +64,6 @@ class Form extends Component {
             labelname="To:"
             validate={this.handleMandatoryValidate}
             placeholder="frank@example.com, kate@example.com"
-            // validate={val => (val ? false : 'To: recipient required')} 
           />
           <InputField
             onChange={this.onInputChange}
@@ -74,7 +73,6 @@ class Form extends Component {
             labelname="cc:"
             validate={this.handleEmailValidate}
             placeholder="optional"
-            // validate={val => (validator.isEmail(val) ? false : 'Email must be valid')} 
           />
           <InputField
             onChange={this.onInputChange}
@@ -84,7 +82,6 @@ class Form extends Component {
             labelname="bcc:"
             validate={this.handleEmailValidate}
             placeholder="optional"
-            // validate={val => (validator.isEmail(val) ? false : 'Email must be valid')} 
           />
           <InputField
             onChange={this.onInputChange}

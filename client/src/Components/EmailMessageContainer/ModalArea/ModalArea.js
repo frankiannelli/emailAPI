@@ -44,7 +44,7 @@ class ModalArea extends Component {
               ))
             }
             <div className="modalButton">
-              <button onClick={this.props.closeModal}>Close Modal</button>
+              <button onClick={this.props.closeModal}>Close</button>
             </div>
           </div>;
       }

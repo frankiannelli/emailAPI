@@ -30,7 +30,7 @@ describe('POST /api/communicate/mail', () => {
       .send(msg)
       .set('Accept', 'application/json')
       .expect(200)
-      .end(function (err) {
+      .end((err) => {
         if (err) return done(err);
         done();
       });
@@ -44,7 +44,7 @@ describe('POST /api/communicate/mail', () => {
       .send('bad message')
       .set('Accept', 'application/json')
       .expect(400)
-      .end(function (err) {
+      .end((err) => {
         if (err) return done(err);
         done();
       });

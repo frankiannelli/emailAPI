@@ -36,12 +36,6 @@ Input {
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* .message {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */
-
 .address {
   display: flex;
   flex-wrap: wrap;

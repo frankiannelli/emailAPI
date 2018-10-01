@@ -11,7 +11,8 @@ class TextBox extends Component {
     validate: PropTypes.func,
     value: PropTypes.string,
     name: PropTypes.string,
-    section: PropTypes.string
+    section: PropTypes.string,
+    placeholder: PropTypes.string
   }
 
   state = {
@@ -40,7 +41,6 @@ class TextBox extends Component {
         <label>{this.props.labelname}</label>
         <Form>
           <TextArea
-            // fluid
             value={this.state.value}
             name={this.props.name}
             section={this.props.section}
